@@ -17,10 +17,21 @@ A desktop application for bridging KasWare wallet KRC20 token data to display to
    npm install -g pear
    ```
 
-2. Run the app:
+2. Clone and run:
    ```bash
-   pear run pear://wnqgttesiocxeoj7j8ddcttqr6digkydnjtwjotejxo1uyoqc5by
+   git clone https://github.com/avirads/wostr-security.git
+   cd wostr-security
+   run.bat
    ```
+
+   Or simply double-click `run.bat` in the project folder.
+
+## Quick Run
+
+After cloning, run the app by executing:
+```
+run.bat
+```
 
 ## Usage
 
