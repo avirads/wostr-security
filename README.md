@@ -2,6 +2,10 @@
 
 A desktop application for bridging KasWare wallet KRC20 token data to display token holdings.
 
+## Demo Video
+
+Watch the app in action: [intro.mp4](intro.mp4)
+
 ## Features
 
 - Connect KasWare wallet via browser bridge
@@ -9,6 +13,16 @@ A desktop application for bridging KasWare wallet KRC20 token data to display to
 - Show KRC20 token balances
 - Detect if wallet has KRC20 LIVE tokens
 - Window controls (minimize, maximize, close)
+
+## Getting LIVE Tokens
+
+This app requires KRC20 LIVE tokens to function properly. If you don't have LIVE tokens:
+
+1. Get Kaspa (KAS) from an exchange
+2. Use the Kaspa Telegram bot to swap for LIVE tokens:
+   - Open Telegram
+   - Search for: **@kspr_home_bot**
+   - Follow the bot instructions to swap KAS for LIVE tokens
 
 ## Installation
 
@@ -63,3 +77,4 @@ To add a custom icon to the launcher:
 - If browser doesn't open automatically, manually navigate to `http://localhost:8989/bridge`
 - Ensure KasWare extension is installed and unlocked
 - Refresh the bridge page if connection fails
+- Make sure you have LIVE tokens in your wallet
