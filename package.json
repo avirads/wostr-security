@@ -1,0 +1,22 @@
+{
+  "name": "wostr-security",
+  "type": "module",
+  "pear": {
+    "name": "wostr-security",
+    "pre": "pear-electron/pre",
+    "routes": ".",
+    "gui": {
+      "width": 800,
+      "height": 600,
+      "frame": false
+    }
+  },
+  "dependencies": {
+    "b4a": "^1.7.3",
+    "crypto-addr-codec": "^0.1.8",
+    "hyperswarm": "^4.16.0",
+    "pear-bridge": "^1.2.5",
+    "pear-electron": "^1.7.26",
+    "ws": "^8.19.0"
+  }
+}

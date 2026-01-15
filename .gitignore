@@ -1,0 +1,5 @@
+node_modules/
+staged-output/
+.pnpm-store/
+*.log
+.DS_Store

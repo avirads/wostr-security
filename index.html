@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>wostr security</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <header id="titlebar">
+    <div class="window-title">wostr security</div>
+    <div class="window-controls">
+      <div class="control-btn" id="min-btn">
+        <svg width="12" height="12" viewBox="0 0 12 12">
+          <rect fill="white" width="10" height="1" x="1" y="6" />
+        </svg>
+      </div>
+      <div class="control-btn" id="max-btn">
+        <svg width="12" height="12" viewBox="0 0 12 12">
+          <rect width="10" height="10" x="1" y="1" fill="none" stroke="white" />
+        </svg>
+      </div>
+      <div class="control-btn close" id="close-btn">
+        <svg width="12" height="12" viewBox="0 0 12 12">
+          <path fill="none" stroke="white" d="M1 1l10 10M11 1L1 11" />
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div id="connect-section" class="center-connect">
+      <div class="crypto-card">
+        <img src="./wostr-sec.jpg" alt="wostr security" class="logo-image">
+        <h2 style="margin: 0 0 10px 0;">Kaspa Wallet</h2>
+        <p class="status-msg">Connect your KasWare wallet to bridge KRC20 tokens.</p>
+        <button id="connect-btn" class="btn-primary">Connect Wallet</button>
+      </div>
+    </div>
+
+    <div id="status-indicator" class="status-indicator"></div>
+
+    <div id="warning-message" class="warning-message">
+      <h3>WARNING: No KRC20 Tokens Found</h3>
+      <p>This app requires KRC20 LIVE tokens to function properly.</p>
+      <a href="https://t.me/kspr_home_bot" target="_blank">Get LIVE Tokens</a>
+    </div>
+
+    <button id="disconnect-btn" class="btn-disconnect">Disconnect Wallet</button>
+  </main>
+
+
+  <script type="module" src="./app.js"></script>
+</body>
+
+</html>

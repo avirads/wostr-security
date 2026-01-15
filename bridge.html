@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Kaspa Bridge</title>
+    <style>
+        body {
+            background: #0f172a;
+            color: #f8fafc;
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            border: 1px solid #334155;
+            max-width: 400px;
+        }
+
+        .status {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-left-color: #38bdf8;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="spinner"></div>
+        <h2 id="title">Connecting to KasWare...</h2>
+        <p id="msg">Please approve the connection in your wallet extension.</p>
+        <div id="status" class="status">Waiting for Extension...</div>
+    </div>
+
+    <script>
+        const port = window.location.port || 8989;
+        const ws = new WebSocket(`ws://localhost:${port}`);
+
+        async function connectWallet(retries = 10) {
+            const statusEl = document.getElementById('status');
+            const titleEl = document.getElementById('title');
+            const msgEl = document.getElementById('msg');
+
+            if (typeof window.kasware === 'undefined') {
+                if (retries > 0) {
+                    statusEl.innerText = `Searching for KasWare... (${retries} attempts left)`;
+                    setTimeout(() => connectWallet(retries - 1), 500);
+                    return;
+                }
+                titleEl.innerText = 'Wallet Not Found';
+                msgEl.innerText = 'Please ensure KasWare is installed and active in this browser, then refresh.';
+                statusEl.innerText = 'Detection Failed';
+                return;
+            }
+
+            try {
+                statusEl.innerText = 'Connecting to Wallet...';
+                const accounts = await window.kasware.requestAccounts();
+                statusEl.innerText = 'Fetching KRC20 Balances...';
+
+                const balance = await window.kasware.getBalance();
+                let krc20 = [];
+                if (window.kasware.getKRC20Balance) {
+                    krc20 = await window.kasware.getKRC20Balance();
+                }
+
+                const data = {
+                    type: 'wallet_data',
+                    address: accounts[0],
+                    balance: balance.total,
+                    tokens: krc20
+                };
+
+                ws.send(JSON.stringify(data));
+
+                titleEl.innerText = 'Connected!';
+                msgEl.innerText = 'Data securely bridged to Desktop. You can close this tab.';
+                statusEl.innerText = 'Success';
+
+                setTimeout(() => window.close(), 2000);
+            } catch (err) {
+                titleEl.innerText = 'Connection Failed';
+                msgEl.innerText = err.message;
+                statusEl.innerText = 'Error';
+            }
+        }
+
+        ws.onopen = () => {
+            document.getElementById('status').innerText = 'Bridge Active';
+            connectWallet();
+        };
+
+        ws.onerror = () => {
+            document.getElementById('status').innerText = 'Bridge Error: Desktop app not reachable';
+        };
+    </script>
+</body>
+
+</html>
