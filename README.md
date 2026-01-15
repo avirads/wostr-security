@@ -33,6 +33,15 @@ After cloning, run the app by executing:
 run.bat
 ```
 
+## Adding App Icon
+
+To add a custom icon to the launcher:
+
+1. Right-click `run.bat` → **Create shortcut**
+2. Right-click the shortcut → **Properties** → **Change Icon**
+3. Select `wostr-sec.ico` from the project folder
+4. Rename the shortcut to "WOSTR Security" and place it on your desktop
+
 ## Usage
 
 1. Launch the application
