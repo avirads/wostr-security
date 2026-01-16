@@ -24,26 +24,21 @@ This app requires KRC20 LIVE tokens to function properly. If you don't have LIVE
    - Search for: **@kspr_home_bot**
    - Follow the bot instructions to swap KAS for LIVE tokens
 
-## Installation
-
-1. Install Pear runtime:
-   ```bash
-   npm install -g pear
-   ```
-
-2. Clone and run:
-   ```bash
-   git clone https://github.com/avirads/wostr-security.git
-   cd wostr-security
-   run.bat
-   ```
-
-   Or simply double-click `run.bat` in the project folder.
-
 ## Quick Run
 
-After cloning, run the app by executing:
+Install Pear runtime and run directly:
+```bash
+npm install -g pear
+pear run pear://xmhd31kfb77j9jc5j3ne46dbfmsjo3xdnahxjmtqgq7zchd4tuty
 ```
+
+## Installation (Development)
+
+To modify the app, clone and run locally:
+```bash
+git clone https://github.com/avirads/wostr-security.git
+cd wostr-security
+npm install -g pear
 run.bat
 ```
 
