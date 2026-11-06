@@ -13,6 +13,21 @@
     .addr { font-family: ui-monospace, monospace; font-size: 11px; color: #94a3b8; word-break: break-all; margin: 8px 0 0; }
     .footer { position: fixed; bottom: 8px; width: 100%; text-align: center; font-size: 11px; color: #64748b; }
     .footer a { color: #94a3b8; }
+    body { overflow: auto; }
+    .app-page { display: none; padding: 32px 24px 56px; max-width: 860px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+    .app-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+    .app-header h2 { margin: 0; }
+    .app-logo { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; }
+    .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .app-card { max-width: none; text-align: left; padding: 20px; box-sizing: border-box; }
+    .app-card h3 { margin: 0 0 8px; font-size: 13px; color: #94a3b8; font-weight: 500; text-transform: uppercase; letter-spacing: .05em; }
+    .app-card.wide { grid-column: 1 / -1; }
+    .big { font-size: 24px; font-weight: 600; margin: 0; }
+    .access { margin: 0; font-weight: 600; }
+    .access.ok { color: #22c55e; }
+    .access.bad { color: #ef4444; }
+    .muted { color: #64748b; font-size: 13px; margin: 8px 0 0; }
+    .app-page .warning-message { position: static; transform: none; display: none; margin: 16px auto 0; }
   </style>
 </head>
 
@@ -28,18 +43,41 @@
         <h2 style="margin: 0 0 10px 0;">Kaspa Wallet</h2>
         <p class="status-msg">Connect your KasWare wallet to check KRC20 tokens.</p>
         <button id="connect-btn" class="btn-primary">Connect Wallet</button>
-        <p id="addr" class="addr"></p>
-        <ul id="tokens" class="token-list"></ul>
       </div>
     </div>
 
+    <section id="app-section" class="app-page">
+      <div class="app-header">
+        <img src="./wostr-sec.jpg" alt="" class="app-logo">
+        <div>
+          <h2>wostr security</h2>
+          <p id="addr" class="addr"></p>
+        </div>
+      </div>
+      <div class="app-grid">
+        <div class="crypto-card app-card">
+          <h3>Access status</h3>
+          <p id="access-status" class="access"></p>
+        </div>
+        <div class="crypto-card app-card">
+          <h3>KAS balance</h3>
+          <p id="kas-balance" class="big"></p>
+        </div>
+        <div class="crypto-card app-card wide">
+          <h3>KRC20 tokens</h3>
+          <ul id="tokens" class="token-list"></ul>
+          <p id="no-tokens" class="muted">No KRC20 tokens in this wallet.</p>
+        </div>
+      </div>
+      <div id="warning-message" class="warning-message">
+        <h3>WARNING: No KRC20 Tokens Found</h3>
+        <p>This app requires KRC20 LIVE tokens to function properly.</p>
+        <a href="https://t.me/kspr_home_bot" target="_blank" rel="noopener">Get LIVE Tokens</a>
+      </div>
+    </section>
+
     <div id="status-indicator" class="status-indicator"></div>
 
-    <div id="warning-message" class="warning-message">
-      <h3>WARNING: No KRC20 Tokens Found</h3>
-      <p>This app requires KRC20 LIVE tokens to function properly.</p>
-      <a href="https://t.me/kspr_home_bot" target="_blank" rel="noopener">Get LIVE Tokens</a>
-    </div>
 
     <button id="disconnect-btn" class="btn-disconnect">Disconnect Wallet</button>
   </main>
