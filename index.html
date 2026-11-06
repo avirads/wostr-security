@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>wostr security</title>
+  <link rel="icon" href="./wostr-sec.ico">
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    .token-list { list-style: none; padding: 0; margin: 12px 0 0; text-align: left; font-size: 13px; }
+    .token-list li { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .addr { font-family: ui-monospace, monospace; font-size: 11px; color: #94a3b8; word-break: break-all; margin: 8px 0 0; }
+    .footer { position: fixed; bottom: 8px; width: 100%; text-align: center; font-size: 11px; color: #64748b; }
+    .footer a { color: #94a3b8; }
+  </style>
+</head>
+
+<body>
+  <header id="titlebar">
+    <div class="window-title">wostr security — web edition</div>
+  </header>
+
+  <main class="main-content">
+    <div id="connect-section" class="center-connect">
+      <div class="crypto-card">
+        <img src="./wostr-sec.jpg" alt="wostr security" class="logo-image">
+        <h2 style="margin: 0 0 10px 0;">Kaspa Wallet</h2>
+        <p class="status-msg">Connect your KasWare wallet to check KRC20 tokens.</p>
+        <button id="connect-btn" class="btn-primary">Connect Wallet</button>
+        <p id="addr" class="addr"></p>
+        <ul id="tokens" class="token-list"></ul>
+      </div>
+    </div>
+
+    <div id="status-indicator" class="status-indicator"></div>
+
+    <div id="warning-message" class="warning-message">
+      <h3>WARNING: No KRC20 Tokens Found</h3>
+      <p>This app requires KRC20 LIVE tokens to function properly.</p>
+      <a href="https://t.me/kspr_home_bot" target="_blank" rel="noopener">Get LIVE Tokens</a>
+    </div>
+
+    <button id="disconnect-btn" class="btn-disconnect">Disconnect Wallet</button>
+  </main>
+
+  <div class="footer">
+    Requires the KasWare browser extension ·
+    <a href="https://github.com/avirads/wostr-security">Desktop app &amp; source</a>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>
